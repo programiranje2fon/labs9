@@ -15,13 +15,13 @@ Create public class **TestBook** in the package **task1**. In the main method of
 Extend class **Book** as follows:
 
 1. The initial value for the **title** attribute is an empty String ("").
-2. Edit the **set method for the title attribute** so that the title can not be NULL. If NULL is passed as the parameter value, throw an **unchecked exception** with message "Title can not be NULL".
+2. Edit the **set method for the title attribute** so that the title can not be NULL. If NULL is passed as the parameter value, throw an **unchecked exception** with message "Title cannot be NULL".
 
 Modify the **TestBook** class so that the title of the (existing) book object is set to NULL. Catch the unchecked exception thrown by the **setTitle** method and print the error message in the console.
 
 Extend class **Book** as follows: 
 
-1. Modify the **set method for the year attribute**. If the value passed to the method is not in the range from 1950 (including this year) to the current year, throw a **checked exception** with the message "The year is not in the appropriate range".
+1. Modify the **set method for the year attribute**. If the value passed to the method is not in the range from 1950 (including this year) to the current year, throw a **checked exception** with the message "Year is not in the appropriate range".
 
 Modify the **TestBook** class so that the year of publication of the (existing) book object is set to 2015. Catch the exception that may be thrown by the method **setYear** and if the exception is thrown, print the error message in the console.
 <br><br>
