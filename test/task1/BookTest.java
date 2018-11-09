@@ -12,7 +12,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import task1.Book;
 import test.TestUtil;
 
 public class BookTest {
@@ -110,6 +109,18 @@ public class BookTest {
 		int godina = (int) TestUtil.getFieldValue(instance, "year");
 
 		assertEquals("Metoda getYear() ne vraca vrednost atributa year", godina, instance.getYear());
+	}
+	
+	@Test
+	public void metoda_equals() throws Exception {
+		instance.setTitle("Zapisi o Goji");
+		instance.setYear(1961);
+		
+		Book k1 = new Book();
+		k1.setTitle("Zapisi o Goji");
+		k1.setYear(1961);
+		
+		assertEquals("Metoda equals() ne vraca vrednost true za prosledjenu knjigu sa istim nazivom i godinom", k1, instance);
 	}
 	
 }
