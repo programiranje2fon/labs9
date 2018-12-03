@@ -77,7 +77,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void metoda_setBroj_1() {
+	public void metoda_setOcena_1() {
 		instance.setRating(1);
 		int ocenaValue = (int) TestUtil.getFieldValue(instance, "rating");
 		assertEquals(
@@ -86,7 +86,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void metoda_setBroj_3() {
+	public void metoda_setOcena_3() {
 		instance.setRating(3);
 		int brojValue = (int) TestUtil.getFieldValue(instance, "rating");
 		assertEquals(
@@ -95,7 +95,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void metoda_setBroj_5() {
+	public void metoda_setOcena_5() {
 		instance.setRating(5);
 		int ocenaValue = (int) TestUtil.getFieldValue(instance, "rating");
 		assertEquals(
