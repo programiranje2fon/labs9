@@ -32,7 +32,7 @@ Create the **Library** class, in the package **task1.library**, with the followi
 2. Public method **addBook** that receives as its input parameter an instance of the Book class and adds it to the end of the list.
 3. Public method **isItAvailable** that receives an object of the Book class as the input parameter. The method returns TRUE if there is a book with the same title and publication year in the list; otherwise the method returns FALSE.
 4. Public method **deleteBook** that receives an object of the Book class as its input parameter, and if the book is in the list, deletes it from the list.
-5. Public method **searchBooks** that receives a String as the input parameter. The method finds and returns a list of all books in the library whose titles start with the text given as the parameter.
+5. Public method **searchBooks** that receives a String as the input parameter. The method finds and returns a list of all books in the library whose titles start with the text given as the parameter. Also, the search needs to be case INSENSITIVE.
 6. Public method **archiveBooks** that receives as its parameter an integer representing a year. The method finds and removes from the books list those books that were published either before or during the given year.
 
 Create the **TestLibrary** class in the package **task1.library**. In the main method of this class, create one object of the **Library** class. In addition, create two objects of the **Book** class:
