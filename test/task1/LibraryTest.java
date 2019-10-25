@@ -29,52 +29,52 @@ public class LibraryTest {
 	}
 	
 	@Test
-	public void atribut_knjige() {
-		assertTrue("U klasi nije definisan atribut books", TestUtil.doesFieldExist(Library.class, "books"));
+	public void attribute_books() {
+		assertTrue("There is no attribute \"books\" declared", TestUtil.doesFieldExist(Library.class, "books"));
 	}
 	
 	@Test
-	public void atribut_knjige_vidljivost() {
-		assertTrue("Atribut books nije privatan", TestUtil.hasFieldModifier(Library.class, "books", Modifier.PRIVATE));
+	public void attribute_books_visibility() {
+		assertTrue("Attribute \"books\" is not private", TestUtil.hasFieldModifier(Library.class, "books", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void atribut_knjige_tipLinkedList() {
+	public void attribute_books_type() {
 		List<?> knjige = (List<?>) TestUtil.getFieldValue(instance, "books");
 		
-		assertTrue("Atribut books nije tipa LinkedList", LinkedList.class.isInstance(knjige));
+		assertTrue("Attribute \"books\" is not a LinkedList", LinkedList.class.isInstance(knjige));
 	}
 	
 	@Test
-	public void metoda_dodajKnjigu() {
+	public void method_addBook() {
 		Book k1 = new Book();
 		instance.addBook(k1);
 		
 		List<?> knjige = (List<?>) TestUtil.getFieldValue(instance, "books");
 		
-		assertTrue("Metoda nije dodala knjigu u listu books", knjige.contains(k1));
+		assertTrue("The method does not add a book to the list", knjige.contains(k1));
 	}
 	
 	@Test
-	public void metoda_daLiPostoji() {
+	public void method_isItAvailable() {
 		Book k1 = new Book();
 		instance.addBook(k1);
 		
-		assertTrue("Metoda nije vratila TRUE za knjigu koja je dodata u listu books", instance.isItAvailable(k1));
+		assertTrue("When passing as argument a book that is already in the list, the method should return \"true\"", instance.isItAvailable(k1));
 	}
 	
 	@Test
-	public void metoda_obrisiKnjigu() {
+	public void method_deleteBook() {
 		Book k1 = new Book();
 		instance.addBook(k1);
 		instance.deleteBook(k1);
 		List<?> knjige = (List<?>) TestUtil.getFieldValue(instance, "books");
 		
-		assertTrue("Metoda nije vratila TRUE za knjigu koja je dodata u listu books", !knjige.contains(k1));
+		assertTrue("The method does not remove a book (that was alreay in the list) from the list", !knjige.contains(k1));
 	}
 	
 	@Test
-	public void metoda_pretraziKnjige() {
+	public void method_searchBooks() {
 		Book k1 = new Book();
 		k1.setTitle("Legenda o Taboru");
 		instance.addBook(k1);
@@ -93,11 +93,11 @@ public class LibraryTest {
 		
 		List<Book> pronadjeneKnjige = instance.searchBooks("ko");
 		
-		assertTrue("Za biblioteku sa knjigama: \"Legenda o Taboru\", \"Beleske jedne Ane\", \"Konte\", \"KO JE ALISA?\", metoda nije vratila listu sa knjigama \"Konte\" i \"KO JE ALISA?\"", pronadjeneKnjige.size() == 2 && pronadjeneKnjige.contains(k3) && pronadjeneKnjige.contains(k4));
+		assertTrue("When the librray is composed of the foolowing books: \"Legenda o Taboru\", \"Beleske jedne Ane\", \"Konte\", \"KO JE ALISA?\", the method should return a list with the foolowing books: \"Konte\" and \"KO JE ALISA?\"", pronadjeneKnjige.size() == 2 && pronadjeneKnjige.contains(k3) && pronadjeneKnjige.contains(k4));
 	}
 	
 	@Test
-	public void metoda_arhivirajKnjige() throws Exception {
+	public void method_archiveBooks() throws Exception {
 		Book k1 = new Book();
 		k1.setYear(2011);
 		instance.addBook(k1);
@@ -118,6 +118,6 @@ public class LibraryTest {
 		
 		List<?> knjige = (List<?>) TestUtil.getFieldValue(instance, "books");
 		
-		assertTrue("Za biblioteku sa knjigama sa godinama: \"2011\", \"2008\", \"2016\", \"2011\", metoda pozvana sa argumentom 2011 nije arhivirala knjige sa godinama \"2008\" i \"2011\"", knjige.size() == 1 && !knjige.contains(k1) && !knjige.contains(k2) && !knjige.contains(k4));
+		assertTrue("When the librray is composed of the books with the following release years: \"2011\", \"2008\", \"2016\", \"2011\", when passing as argument 2011, the method should have archived the books with years \"2008\" and \"2011\"", knjige.size() == 1 && !knjige.contains(k1) && !knjige.contains(k2) && !knjige.contains(k4));
 	}
 }

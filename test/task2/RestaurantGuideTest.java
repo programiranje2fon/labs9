@@ -42,24 +42,24 @@ public class RestaurantGuideTest {
 	}
 	
 	@Test
-	public void atribut_restorani() {
-		assertTrue("U klasi nije definisan atribut restaurants", TestUtil.doesFieldExist(RestaurantGuide.class, "restaurants"));
+	public void attribute_restaurants() {
+		assertTrue("There is no attribute \"restaurants\" declared", TestUtil.doesFieldExist(RestaurantGuide.class, "restaurants"));
 	}
 	
 	@Test
-	public void atribut_restorani_vidljivost() {
-		assertTrue("Atribut restaurants nije privatan", TestUtil.hasFieldModifier(RestaurantGuide.class, "restaurants", Modifier.PRIVATE));
+	public void attribute_restaurants_visibility() {
+		assertTrue("Attribute \"restaurants\" is not private", TestUtil.hasFieldModifier(RestaurantGuide.class, "restaurants", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void atribut_restorani_tipArrayList() {
+	public void attribute_restaurants_typeArrayList() {
 		List<?> restorani = (List<?>) TestUtil.getFieldValue(instance, "restaurants");
 		
-		assertTrue("Atribut restaurants nije tipa ArrayList", ArrayList.class.isInstance(restorani));
+		assertTrue("Attribute \"restaurants\" is not an ArrayList", ArrayList.class.isInstance(restorani));
 	}
 	
 	@Test
-	public void metoda_dodajNaPocetak() {
+	public void method_addAsFirst() {
 		Restaurant r1 = new Restaurant();
 		instance.addAsFirst(r1);
 		
@@ -68,12 +68,12 @@ public class RestaurantGuideTest {
 		
 		ArrayList<?> restorani = (ArrayList<?>) TestUtil.getFieldValue(instance, "restaurants");
 		
-		assertTrue("Nakon dodavanja dva restorana u vodic, prvi restoran nije na drugom mestu u nizu restorani", restorani.get(0).equals(r2));
-		assertTrue("Nakon dodavanja dva restorana u vodic, drugi restoran nije na prvom mestu u nizu restorani", restorani.get(1).equals(r1));
+		assertTrue("When the method is called twice, the first restaurant added should be at the second position (index = 1) in the list \"restaurants\"", restorani.get(0).equals(r2));
+		assertTrue("When the method is called twice, the second restaurant should be at the first position (index = 0) in the list \"restaurants\"", restorani.get(1).equals(r1));
 	}
 	
 	@Test
-	public void metoda_ispisiRestoraneSaOcenom() {
+	public void method_printsRestaurantsWithRating() {
 		Restaurant r1 = new Restaurant();
 		r1.setName("Salon 5");
 		r1.setRating(5);
@@ -99,11 +99,11 @@ public class RestaurantGuideTest {
 		String ispis = outContent.toString();
 		String ocekivaniIspis = "Radost" + System.lineSeparator() + "Salon 5" + System.lineSeparator();
 		
-		assertEquals("Za restorane u vodicu: \"Salon 5\" (ocena 5), \"Casa Nova\" (ocena 1), \"Ciribu Ciriba\" (ocena 3), \"Radost\" (ocena 5), ispisiRestoraneSaOcenom() sa prosledjenim parametrom \"5\" nije ispisao:\n" + ocekivaniIspis, ispis, ocekivaniIspis);
+		assertEquals("When the guide contains the following restaurants: \"Salon 5\" (rating 5), \"Casa Nova\" (rating 1), \"Ciribu Ciriba\" (rating 3), \"Radost\" (rating 5), for the method argument \"5\", the method should print:\n" + ocekivaniIspis, ispis, ocekivaniIspis);
 	}
 	
 	@Test
-	public void metoda_obrisiLoseRestorane() {
+	public void method_removeBadRestaurants() {
 		Restaurant r1 = new Restaurant();
 		r1.setName("Salon 5");
 		r1.setRating(5);
@@ -128,8 +128,7 @@ public class RestaurantGuideTest {
 		
 		ArrayList<?> restorani = (ArrayList<?>) TestUtil.getFieldValue(instance, "restaurants");
 		
-		assertFalse("Za restorane u vodicu: \"Salon 5\" (ocena 5), \"Casa Nova\" (ocena 1), \"Ciribu Ciriba\" (ocena 3), \"Radost\" (ocena 5), obrisiLoseRestorane() nije uklonila restoran \"Casa Nova\" (ocena 1) iz liste restorani", restorani.contains(r2));
+		assertFalse("When the guide contains the following restaurants: \"Salon 5\" (rating 5), \"Casa Nova\" (rating 1), \"Ciribu Ciriba\" (rating 3), \"Radost\" (rating 5), the method should return the restaurant \"Casa Nova\" (rating 1) from the list \"restaurants\"", restorani.contains(r2));
 	}
-	
-	
+
 }

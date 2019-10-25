@@ -32,40 +32,40 @@ public class BookTest {
 	}
 	
 	@Test
-	public void atribut_naziv() {
-		assertTrue("U klasi nije definisan atribut title", TestUtil.doesFieldExist(Book.class, "title"));
+	public void attribute_title() {
+		assertTrue("There is no attribute \"title\" declared", TestUtil.doesFieldExist(Book.class, "title"));
 	}
 	
 	@Test
-	public void atribut_naziv_vidljivost() {
-		assertTrue("Atribut title nije privatan", TestUtil.hasFieldModifier(Book.class, "title", Modifier.PRIVATE));
+	public void attribute_title_visibility() {
+		assertTrue("Attribute \"title\" is not private", TestUtil.hasFieldModifier(Book.class, "title", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void atribut_naziv_pocetnaVrednost() {
+	public void attribute_title_defaultValue() {
 		String nazivValue = (String) TestUtil.getFieldValue(instance, "title");
-		assertEquals("Pocetna vrednost atributa title nije prazan string", "", nazivValue);
+		assertEquals("The default value of the attribute \"title\" should be an empty String", "", nazivValue);
 	}
 	
 	@Test
-	public void atribut_godina() {
-		assertTrue("U klasi nije definisan atribut year", TestUtil.doesFieldExist(Book.class, "year"));
+	public void attribute_year() {
+		assertTrue("There is no attribute \"year\" declared", TestUtil.doesFieldExist(Book.class, "year"));
 	}
 	
 	@Test
-	public void atribut_godina_vidljivost() {
-		assertTrue("Atribut year nije privatan", TestUtil.hasFieldModifier(Book.class, "year", Modifier.PRIVATE));
+	public void attribute_year_visibility() {
+		assertTrue("Attribute \"year\" is not private", TestUtil.hasFieldModifier(Book.class, "year", Modifier.PRIVATE));
 	}
 	
 	@Test
-	public void metoda_setNaziv() {
+	public void method_setTitle() {
 		instance.setTitle("Na Drini cuprija");
 		String naziv = (String) TestUtil.getFieldValue(instance, "title");
-		assertEquals("Nakon poziva metode setTitle(String) sa prosledjenim argumentom \"Na Drini cuprija\", vrednost atributa title nema tu vrednost", "Na Drini cuprija", naziv);
+		assertEquals("After passing an argument \"Na Drini cuprija\", the attribute \"title\" does not have this value", "Na Drini cuprija", naziv);
 	}
 	
 	@Test
-	public void metoda_setNaziv_null() {
+	public void method_setTitle_null() {
 		expectedEx.expect(RuntimeException.class);
 	    expectedEx.expectMessage("Title cannot be NULL");
 	    
@@ -73,21 +73,21 @@ public class BookTest {
 	}
 	
 	@Test
-	public void metoda_getNaziv() {
+	public void method_getTitle() {
 		String naziv = (String) TestUtil.getFieldValue(instance, "title");
 
-		assertEquals("Metoda getTitle() ne vraca vrednost atributa title", naziv, instance.getTitle());
+		assertEquals("The method does not return the value od the attribute \"title\"", naziv, instance.getTitle());
 	}
 	
 	@Test
-	public void metoda_setGodina() throws Exception {
+	public void method_setYear() throws Exception {
 		instance.setYear(2010);
 		int godina = (int) TestUtil.getFieldValue(instance, "year");
-		assertEquals("Nakon poziva metode setYear(int) sa prosledjenim argumentom \"2010\", vrednost atributa year nema tu vrednost", 2010, godina);
+		assertEquals("When the method argument is \"2010\", the attribute \"year\" does not have this value", 2010, godina);
 	}
 	
 	@Test
-	public void metoda_setGodina_ispodOpsega() throws Exception {
+	public void method_setYear_bellowLimits() throws Exception {
 		expectedEx.expect(Exception.class);
 	    expectedEx.expectMessage("Year is not in the appropriate range");
 	    
@@ -95,7 +95,7 @@ public class BookTest {
 	}
 	
 	@Test
-	public void metoda_setGodina_iznadOpsega() throws Exception {
+	public void method_setYear_aboveLimits() throws Exception {
 		expectedEx.expect(Exception.class);
 		expectedEx.expectMessage("Year is not in the appropriate range");
 		
@@ -105,14 +105,14 @@ public class BookTest {
 	}
 	
 	@Test
-	public void metoda_getGodina() {
+	public void method_getYear() {
 		int godina = (int) TestUtil.getFieldValue(instance, "year");
 
-		assertEquals("Metoda getYear() ne vraca vrednost atributa year", godina, instance.getYear());
+		assertEquals("The method does not return the value od the attribute \"year\"", godina, instance.getYear());
 	}
 	
 	@Test
-	public void metoda_equals() throws Exception {
+	public void method_equals() throws Exception {
 		instance.setTitle("Zapisi o Goji");
 		instance.setYear(1961);
 		
@@ -120,7 +120,7 @@ public class BookTest {
 		k1.setTitle("Zapisi o Goji");
 		k1.setYear(1961);
 		
-		assertEquals("Metoda equals() ne vraca vrednost true za prosledjenu knjigu sa istim nazivom i godinom", k1, instance);
+		assertEquals("When the argument is a book with the same title and year, the method should return true", k1, instance);
 	}
 	
 }

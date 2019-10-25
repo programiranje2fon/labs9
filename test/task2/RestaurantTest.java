@@ -32,36 +32,36 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void atribut_naziv() {
-		assertTrue("U klasi nije definisan atribut name", TestUtil.doesFieldExist(Restaurant.class, "name"));
+	public void attribute_name() {
+		assertTrue("There is no attribute \"name\" declared", TestUtil.doesFieldExist(Restaurant.class, "name"));
 	}
 
 	@Test
-	public void atribut_naziv_vidljivost() {
-		assertTrue("Atribut name nije privatan", TestUtil.hasFieldModifier(Restaurant.class, "name", Modifier.PRIVATE));
+	public void attribute_name_visibility() {
+		assertTrue("Attribute \"name\" is not private", TestUtil.hasFieldModifier(Restaurant.class, "name", Modifier.PRIVATE));
 	}
 
 	@Test
-	public void atribut_ocena() {
-		assertTrue("U klasi nije definisan atribut rating", TestUtil.doesFieldExist(Restaurant.class, "rating"));
+	public void attribute_rating() {
+		assertTrue("There is no attribute \"rating\" declared", TestUtil.doesFieldExist(Restaurant.class, "rating"));
 	}
 
 	@Test
-	public void atribut_ocena_vidljivost() {
-		assertTrue("Atribut rating nije privatan", TestUtil.hasFieldModifier(Restaurant.class, "rating", Modifier.PRIVATE));
+	public void attribute_rating_visibility() {
+		assertTrue("Attribute \"rating\" is not private", TestUtil.hasFieldModifier(Restaurant.class, "rating", Modifier.PRIVATE));
 	}
 
 	@Test
-	public void metoda_setNaziv() {
+	public void method_setName() {
 		instance.setName("Madera");
 		String nazivValue = (String) TestUtil.getFieldValue(instance, "name");
 		assertEquals(
-				"Nakon poziva metode setName(String) sa prosledjenim argumentom \"Madera\", vrednost atributa name nema tu vrednost",
+				"For the method argument \"Madera\", the attribute \"name\" should have this value",
 				"Madera", nazivValue);
 	}
 
 	@Test
-	public void metoda_setNaziv_null() {
+	public void method_setName_null() {
 		expectedEx.expect(RuntimeException.class);
 		expectedEx.expectMessage("ERROR");
 
@@ -69,42 +69,42 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void metoda_getNaziv() {
+	public void method_getName() {
 		instance.setName("Madera");
 		String nazivValue = (String) TestUtil.getFieldValue(instance, "name");
 
-		assertEquals("Metoda getName() ne vraca vrednost atributa name", nazivValue, instance.getName());
+		assertEquals("The method does not return the value of the attribute \"name\"", nazivValue, instance.getName());
 	}
 
 	@Test
-	public void metoda_setOcena_1() {
+	public void method_setRating_1() {
 		instance.setRating(1);
 		int ocenaValue = (int) TestUtil.getFieldValue(instance, "rating");
 		assertEquals(
-				"Nakon poziva metode setRating(int) sa prosledjenim argumentom \"1\", vrednost atributa rating nema tu vrednost",
+				"For the method argument \"1\", the attribute \"rating\" should have this value",
 				1, ocenaValue);
 	}
 
 	@Test
-	public void metoda_setOcena_3() {
+	public void method_setRating_3() {
 		instance.setRating(3);
 		int brojValue = (int) TestUtil.getFieldValue(instance, "rating");
 		assertEquals(
-				"Nakon poziva metode setRating(int) sa prosledjenim argumentom \"3\", vrednost atributa rating nema tu vrednost",
+				"For the method argument \"3\", the attribute \"rating\" should have this value",
 				3, brojValue);
 	}
 
 	@Test
-	public void metoda_setOcena_5() {
+	public void method_setRating_5() {
 		instance.setRating(5);
 		int ocenaValue = (int) TestUtil.getFieldValue(instance, "rating");
 		assertEquals(
-				"Nakon poziva metode setRating(int) sa prosledjenim argumentom \"5\", vrednost atributa rating nema tu vrednost",
+				"For the method argument  \"5\", the attribute \"rating\" should have this value",
 				5, ocenaValue);
 	}
 
 	@Test
-	public void metoda_setBroj_vanGranice() {
+	public void method_setRating_aboveTheLimits() {
 		expectedEx.expect(RuntimeException.class);
 		expectedEx.expectMessage("ERROR");
 
@@ -112,9 +112,9 @@ public class RestaurantTest {
 	}
 
 	@Test
-	public void metoda_getOcena() {
+	public void method_getRating() {
 		int ocenaValue = (int) TestUtil.getFieldValue(instance, "rating");
 
-		assertEquals("Metoda getRating() ne vraca vrednost atributa rating", ocenaValue, instance.getRating());
+		assertEquals("The method does not return the value of the attribute \"rating\"", ocenaValue, instance.getRating());
 	}
 }
